@@ -1,0 +1,7 @@
+Dockerfile:
+FROM alpine AS stage1
+RUN set -ex; mkdir -p /work; touch /work/foo
+
+FROM alpine
+RUN --mount=type=bind,target=/work,from=stage1,source=/work,readonly \
+    set -ex; ls -la /work
