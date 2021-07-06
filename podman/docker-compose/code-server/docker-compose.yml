@@ -1,0 +1,11 @@
+version: "3"
+services:
+  code:
+    image: codercom/code-server
+    restart: unless-stopped
+    environment:
+      PASSWORD: "password"
+    ports:
+      - 8888:8080
+    volumes:
+      - ./project:/root/project
